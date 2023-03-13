@@ -38,7 +38,6 @@ function singleThread() {
 }
 
 singleThread();
-g;
 
 /* hola */
 

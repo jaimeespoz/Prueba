@@ -1,18 +1,21 @@
-"use strict";
+'use strict';
 
-var express = require("express"),
-  /* routes = require("./routes"), */
-  publicDir = express.static(`${__dirname}/public`),
-  viewDir = "${__dirname}/views",
-  port = process.env.PORT || 3000,
-  app = express();
+var express = require('express'),
+	/* routes = require("./routes"), */
+	publicDir = express.static(`${__dirname}/public`),
+	viewDir = '${__dirname}/views',
+	port = process.env.PORT || 3000,
+	app = express();
 
 app
-  .set("views", viewDir)
-  .set("view engine", "jade")
-  .set("port", port)
+	.set('views', viewDir)
+	.set('view engine', 'jade')
+	.set('port', port)
 
-  .use(publicDir);
+	.use(publicDir);
 // .use(routes);
 
+console.log('-----------------------------------------------');
+console.log(publicDir);
+console.log('-----------------------------------------------');
 module.exports = app;
