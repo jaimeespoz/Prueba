@@ -15,7 +15,4 @@ app
 	.use(publicDir);
 // .use(routes);
 
-console.log('-----------------------------------------------');
-console.log(publicDir);
-console.log('-----------------------------------------------');
 module.exports = app;
