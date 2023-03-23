@@ -1,8 +1,43 @@
-'use strict';
+"use strict";
 
-/* hola */
+const express = require("express");
+const path = require("path");
+const bodyParser = require("body-parser");
 
-var app = require('./app'),
-	server = app.listen(app.get('port'), () => {
-		console.log('Iniciando Aplicacion');
-	});
+const app = express();
+
+const routes = require("./routes/index");
+
+// view engine setup
+// app.set("views", path.join(__dirname, "views"));
+// app.engine("html", require("ejs").renderFile);
+// app.set("view engine", "html");
+
+// settings
+app
+  .set("views", path.join(__dirname, "public"))
+  .engine("html", require("ejs").renderFile)
+  .set("view engine", "html")
+  .set("port", process.env.PORT || 3000);
+
+// middlewares
+// app.use(app.get("views"));
+app.use(async (req, res, next) => {
+  console.log(`${req.url} - ${req.method}`);
+  next();
+});
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// routes
+app.use(routes);
+
+// static files
+app.use(express.static(path.join(__dirname, "public")));
+// app.use(express.static("public"));
+
+// start the server
+app.listen(app.get("port"), () => {
+  console.log("Server on port ", app.get("port"));
+});
