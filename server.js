@@ -8,11 +8,6 @@ const app = express();
 
 const routes = require("./routes/index");
 
-// view engine setup
-// app.set("views", path.join(__dirname, "views"));
-// app.engine("html", require("ejs").renderFile);
-// app.set("view engine", "html");
-
 // settings
 app
   .set("views", path.join(__dirname, "public"))
@@ -35,7 +30,6 @@ app.use(routes);
 
 // static files
 app.use(express.static(path.join(__dirname, "public")));
-// app.use(express.static("public"));
 
 // start the server
 app.listen(app.get("port"), () => {
